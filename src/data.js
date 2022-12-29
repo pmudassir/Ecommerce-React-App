@@ -1,7 +1,7 @@
 export const sliderItems = [
     {
         id: 1,
-        img: "https://o.remove.bg/downloads/9b8ccddc-10c2-471f-b904-ff9fd90d761d/m-bhavya-115-absorbing-original-imaffgfftzhgx2ns-removebg-preview.png",
+        img: "https://i.ibb.co/D4DNcpr/lovepik-fashion-womens-summer-shopping-image-png-image-400331106-wh1200-removebg-preview.png",
         title: "SUMMER SALE",
         desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
         bg: "f5fafd",
