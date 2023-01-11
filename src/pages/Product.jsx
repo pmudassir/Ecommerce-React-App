@@ -72,6 +72,7 @@ const FilterColor = styled.div`
     background-color: ${props => props.color};
     margin: 0px 5px;
     cursor: pointer;
+    border: 1px solid gray;
 `;
 
 const FilterSize = styled.select`
@@ -122,9 +123,20 @@ const Product = () => {
     const location = useLocation()
     const id = location.pathname.split("/")[2]
     const [product, setProduct] = useState({})
+    const [quantity, setQuantity] = useState(1)
+    const [color, setColor] = useState("")
+    const [size, setSize] = useState("")
+
+    const handleQuantity = (type) =>{
+        if (type === "dec") {
+            quantity>1 && setQuantity(quantity - 1)
+        } else {
+            setQuantity(quantity + 1)
+        }
+    }
 
     useEffect(() => {
-        const getProducts = async () => {
+        const getProduct = async () => {
             try {
                 const res = await publicRequest.get("/products/find/" + id)
                 setProduct(res.data)
@@ -132,7 +144,7 @@ const Product = () => {
                 console.log(error);
             }
         }
-        getProducts()
+        getProduct()
     }, [id])
 
     return (
@@ -150,26 +162,25 @@ const Product = () => {
                     <FilterContainer>
                         <Filter>
                             <FilterTitle>Color</FilterTitle>
-                            <FilterColor color="black" />
-                            <FilterColor color="darkblue" />
-                            <FilterColor color="gray" />
+                            {product.color && product.color.map((c)=>(    
+                            <FilterColor color= {c} key= {c} onClick={()=>setColor(c)}/>
+                            ))} 
+                        {/* if product contains color array it will map through the colors */}
                         </Filter>
                         <Filter>
                             <FilterTitle>Size</FilterTitle>
-                            <FilterSize>
-                                <FilterSizeOption>XS</FilterSizeOption>
-                                <FilterSizeOption>S</FilterSizeOption>
-                                <FilterSizeOption>M</FilterSizeOption>
-                                <FilterSizeOption>L</FilterSizeOption>
-                                <FilterSizeOption>XL</FilterSizeOption>
+                            <FilterSize onChange={(e)=>setSize(e.target.value)}>
+                                {product.size && product.size.map((s)=>(
+                                    <FilterSizeOption key={s}>{s}</FilterSizeOption>
+                                ))}
                             </FilterSize>
                         </Filter>
                     </FilterContainer>
                     <AddContainer>
                         <AmountContainer>
-                            <Remove />
-                            <Amount>1</Amount>
-                            <Add />
+                            <Remove onClick={()=> handleQuantity("dec")}/>
+                            <Amount>{quantity}</Amount>
+                            <Add onClick={()=> handleQuantity("inc")}/>
                         </AmountContainer>
                         <Button>ADD TO CART</Button>
                     </AddContainer>
