@@ -127,12 +127,16 @@ const Product = () => {
     const [color, setColor] = useState("")
     const [size, setSize] = useState("")
 
-    const handleQuantity = (type) =>{
+    const handleQuantity = (type) => {
         if (type === "dec") {
-            quantity>1 && setQuantity(quantity - 1)
+            quantity > 1 && setQuantity(quantity - 1)
         } else {
             setQuantity(quantity + 1)
         }
+    }
+
+    const handleClick = ()=>{
+        //update cart
     }
 
     useEffect(() => {
@@ -162,15 +166,15 @@ const Product = () => {
                     <FilterContainer>
                         <Filter>
                             <FilterTitle>Color</FilterTitle>
-                            {product.color && product.color.map((c)=>(    
-                            <FilterColor color= {c} key= {c} onClick={()=>setColor(c)}/>
-                            ))} 
-                        {/* if product contains color array it will map through the colors */}
+                            {product.color && product.color.map((c) => (
+                                <FilterColor color={c} key={c} onClick={() => setColor(c)} />
+                            ))}
+                            {/* if product contains color array it will map through the colors */}
                         </Filter>
                         <Filter>
                             <FilterTitle>Size</FilterTitle>
-                            <FilterSize onChange={(e)=>setSize(e.target.value)}>
-                                {product.size && product.size.map((s)=>(
+                            <FilterSize onChange={(e) => setSize(e.target.value)}>
+                                {product.size && product.size.map((s) => (
                                     <FilterSizeOption key={s}>{s}</FilterSizeOption>
                                 ))}
                             </FilterSize>
@@ -178,11 +182,11 @@ const Product = () => {
                     </FilterContainer>
                     <AddContainer>
                         <AmountContainer>
-                            <Remove onClick={()=> handleQuantity("dec")}/>
+                            <Remove onClick={() => handleQuantity("dec")} />
                             <Amount>{quantity}</Amount>
-                            <Add onClick={()=> handleQuantity("inc")}/>
+                            <Add onClick={() => handleQuantity("inc")} />
                         </AmountContainer>
-                        <Button>ADD TO CART</Button>
+                        <Button onClick={handleClick}>ADD TO CART</Button>
                     </AddContainer>
                 </InfoContainer>
             </Wrapper>

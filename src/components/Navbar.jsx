@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import { Badge } from "@material-ui/core";
 import { mobile } from "../responsive";
+import { useSelector } from "react-redux";
 
 //styling a div using styled components instead of separate css.
 const Container = styled.div`
@@ -68,13 +69,14 @@ const MenuItem = styled.div`
 `;
 
 const Navbar = () => {
+    const cart = useSelector()
     return (
         <Container>
             <Wrapper>
                 <Left>
                     <Language>EN</Language>
                     <SearchContainer>
-                        <Input placeholder="Seach"/>
+                        <Input placeholder="Search"/>
                         <Search style={{ color: "gray", fontSize: 16 }} />
                     </SearchContainer>
                 </Left>

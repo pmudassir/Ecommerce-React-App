@@ -40,20 +40,20 @@ const Select = styled.select`
 const Option = styled.option``;
 
 const ProductList = () => {
-    
+
     const location = useLocation();  //This hook returns the current location as an object.
-    
+
     const category = (location.pathname.split("/")[2]);
-    
+
     const [filters, setFilters] = useState({});
-    
+
     const [sort, setSort] = useState("newest");
 
-    const handleFilter = (event)=>{
+    const handleFilter = (event) => {
         const value = event.target.value;
         setFilters({
             ...filters,
-            [event.target.name] : value
+            [event.target.name]: value
         })
     }
 
@@ -96,7 +96,7 @@ const ProductList = () => {
                     </Select>
                 </Filter>
             </FilterContainer>
-            <Products category={category} filters={filters} sort={sort}/>
+            <Products category={category} filters={filters} sort={sort} />
             <Newsletter />
             <Footer />
         </Container>
