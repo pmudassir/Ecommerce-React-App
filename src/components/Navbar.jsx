@@ -4,6 +4,7 @@ import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import { Badge } from "@material-ui/core";
 import { mobile } from "../responsive";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 //styling a div using styled components instead of separate css.
 const Container = styled.div`
@@ -87,11 +88,13 @@ const Navbar = () => {
                 <Right>
                     <MenuItem>REGISTER</MenuItem>
                     <MenuItem>SIGN IN</MenuItem>
-                    <MenuItem>
-                        <Badge badgeContent={quantity} color="primary">
-                            <ShoppingCartOutlined />
-                        </Badge>
-                    </MenuItem>
+                    <Link to="/cart" style={{textDecoration: "none", color: "inherit"}}>
+                        <MenuItem>
+                            <Badge badgeContent={quantity} color="primary">
+                                <ShoppingCartOutlined/>
+                            </Badge>
+                        </MenuItem>
+                    </Link>
                 </Right>
             </Wrapper>
         </Container>
