@@ -5,6 +5,7 @@ import Product from "./pages/Product";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Success from "./pages/Success";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/login" element={user?(<Navigate replace to="/"/>) : (<Login/>)}/>
         <Route path="/register" element={user?(<Navigate replace to="/"/>) : (<Register/>)}/>
+        <Route path="/success" element={<Success/>}/>
       </Routes>
     </Router>
   );
