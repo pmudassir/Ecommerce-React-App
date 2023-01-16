@@ -164,7 +164,7 @@ const Button = styled.button`
 const Cart = () => {
     const cart = useSelector(state => state.cart)
     const [stripeToken, setStripeToken] = useState(null)
-    const history = useNavigate()
+    const navigate = useNavigate()
     
     const onToken = (token) => {
         setStripeToken(token)
@@ -176,17 +176,18 @@ const Cart = () => {
                 const res = await userRequest.post("/checkout/payment", {
                     tokenId: stripeToken.id,
                     amount: cart.total * 100,
-                })
-                history("/success", {
-                    data: res.data,
+                });
+                const data = res.data;
+                navigate("success", {
+                    stripeData: data,
                     products: cart,
-                })
+                });
             } catch (error) {
                 console.log(error);
-            }
-        }
+            };
+        };
         stripeToken && makeRequest()
-    },[stripeToken, history, cart.total])
+    },[stripeToken, navigate, cart.total]);
 
     return (
         <Container>
@@ -263,6 +264,6 @@ const Cart = () => {
             <Footer />
         </Container>
     )
-}
+};
 
-export default Cart
+export default Cart;
