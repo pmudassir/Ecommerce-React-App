@@ -7,9 +7,10 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Success from "./pages/Success";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const App = () => {
-  const user = true;  //checking if user is already logged in or registered if true user will be navigated to home page
+  const user = useSelector((state) => state.user.currentUser);  //checking if user is already logged in or registered if true user will be navigated to home page
   return (
     <Router>
       <Routes>
