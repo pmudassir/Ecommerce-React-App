@@ -68,6 +68,9 @@ const Error = styled.span`
     color: red;
 `;
 
+const Success = styled.span`
+    color: green;
+`;
 
 const Login = () => {
     const [username, setUsername] = useState("")
@@ -88,7 +91,8 @@ const Login = () => {
                     <Input placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
                     <Input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
                     <Button onClick={handleClick} disabled={isFetching}>LOGIN</Button>
-                    {error && <Error>Something went wrong.</Error>}
+                    {/* {error && <Error>Something went wrong</Error>}
+                    {error === false && <Success>Login Successful</Success>} */}
                     <Link>FORGOT PASSWORD?</Link>
                     <Link>CREATE NEW ACCOUNT.</Link>
                 </Form>
