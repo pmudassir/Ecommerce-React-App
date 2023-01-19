@@ -1,7 +1,11 @@
 import axios from "axios";
 
 const BASE_URL = "http://localhost:5000/api/"
-const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYmQ2YjdkYTNlMjViNzg5ODBhYWM3MSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MzM1ODI0OCwiZXhwIjoxNjczNjE3NDQ4fQ.Ejdc8wS6ZsRpfyAQWk8GzJMNZ3-92YFO1ODhmHu7EW8"
+const user = JSON.parse(localStorage.getItem("persist:root"))?.user;
+const currentUser = user && JSON.parse(user).currentUser;
+const TOKEN = currentUser?.accessToken;
+
+//the user details are saved to storage using the persistor so it checks if a user already exists while fetching from the localStorage.
 
 export const publicRequest = axios.create({
     baseURL: BASE_URL
