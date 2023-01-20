@@ -1,20 +1,19 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api/"
-const user = JSON.parse(localStorage.getItem("persist:root"))?.user;
-const currentUser = user && JSON.parse(user).currentUser;
-const TOKEN = currentUser?.accessToken;
+const BASE_URL = "http://localhost:5000/api/";
 
-//the user details are saved to storage using the persistor so it checks if a user already exists while fetching from the localStorage.
+const user = JSON.parse(localStorage.getItem("persist:root")) && JSON.parse(localStorage.getItem("persist:root")).user;
+const currentUser = user && JSON.parse(user).currentUser;
+const TOKEN = currentUser && currentUser.accessToken;
 
 export const publicRequest = axios.create({
-    baseURL: BASE_URL
-})
+  baseURL: BASE_URL,
+});
 
 export const userRequest = axios.create({
-    baseURL: BASE_URL,
-    header: {token: `Bearer ${TOKEN}`}
-})
+  baseURL: BASE_URL,
+  header: { token: `Bearer ${TOKEN}` },
+});
 
 
 //Instead of always writing the http endpoint for axios now we can simply call publicReq and userReq for respective uses.

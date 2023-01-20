@@ -43,7 +43,7 @@ const ProductList = () => {
 
     const location = useLocation();  //This hook returns the current location as an object.
 
-    const category = (location.pathname.split("/")[2]);
+    const category = location.pathname.split("/")[2];
 
     const [filters, setFilters] = useState({});
 

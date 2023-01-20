@@ -6,7 +6,7 @@ import { userRequest } from '../requestMethods'
 const Success = () => {
 
   const location = useLocation()
-  const data =  location.state && location.state.stripeData
+  const data = location.state && location.state.stripeData
   const cart = location.state && location.state.cart
   const currentUser = useSelector((state) => state.user && state.user.currentUser)
   const [orderId, setOrderId] = useState(null)
@@ -18,7 +18,7 @@ const Success = () => {
           userId: currentUser._id,
           products: cart.products && cart.products.map((item) => ({
             productId: item._id,
-            quantity: item.quantity
+            quantity: item._quantity
           })),
           amount: cart.total,
           address: data.billing_details.address
@@ -28,7 +28,7 @@ const Success = () => {
         console.log(error);
       }
     }
-    cart && createOrder()
+    data && createOrder()
   }, [cart, data, currentUser])
 
   return (
