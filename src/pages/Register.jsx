@@ -21,7 +21,7 @@ const Wrapper = styled.div`
     width: 40%;
     padding: 20px;
     background-color: white;
-    ${mobile({ width: "75%"})};
+    ${mobile({ width: "75%" })};
 `;
 
 const Title = styled.h1`
@@ -65,8 +65,8 @@ const Register = () => {
                     <Input placeholder="Last Name" />
                     <Input placeholder="Username" />
                     <Input placeholder="Email" />
-                    <Input placeholder="Password" />
-                    <Input placeholder="Confirm Password" />
+                    <Input placeholder="Password" type='password' />
+                    <Input placeholder="Confirm Password" type='password' />
                     <Agreement>By creating an account, I consent to the processing of my personal
                         data in accordance with the <b>PRIVACY POLICY</b>
                     </Agreement>
