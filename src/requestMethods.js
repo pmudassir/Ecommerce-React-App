@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://ec2-3-133-116-53.us-east-2.compute.amazonaws.com/";
+const BASE_URL = "http://3.133.116.53/api";
 
 const user = JSON.parse(localStorage.getItem("persist:root")) && JSON.parse(localStorage.getItem("persist:root")).user;
 const currentUser = user && JSON.parse(user).currentUser;
